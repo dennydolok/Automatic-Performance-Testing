@@ -39,19 +39,9 @@ func main() {
 		break
 	}
 
-	fmt.Println("Running performance test...")
-	cmd := exec.Command("k6", "run", "-e", "URL="+uri, "-e", "DURATION="+duration, "/Lib/performance-test.js")
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		fmt.Println(err)
-		fmt.Printf("Output: %s\n", output)
-		return
-	}
-	fmt.Println(string(output))
-
 	fmt.Println("Running load test...")
-	cmd = exec.Command("k6", "run", "-e", "URL="+uri, "-e", "DURATION="+duration, "-e", "VUS="+vus, "-e", "RPS="+rps, "/Lib/load-test.js")
-	output, err = cmd.CombinedOutput()
+	cmd := exec.Command("k6", "run", "-e", "URL="+uri, "-e", "DURATION="+duration, "-e", "VUS="+vus, "-e", "RPS="+rps, "/Lib/load-test.js")
+	output, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Println(err)
 		fmt.Printf("Output: %s\n", output)

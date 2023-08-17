@@ -9,7 +9,7 @@ const time = duration.toString() + "m";
 export let options = {
   rps: parseInt(__ENV.RPS),
   stages: [
-    { duration: '2m', target: parseInt(__ENV.VUS / 2) },
+    { duration: '2m', target: __ENV.VUS },
     { duration: time, target: __ENV.VUS },
     { duration: '1m', target: 0},
   ]
